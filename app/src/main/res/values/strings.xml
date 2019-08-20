@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">TestItau</string>
+
+    <string name="balance_account_label">Conta Corrente</string>
+    <string name="savings_account_label">Conta Poupança</string>
+    <string name="account_origin_label">de:</string>
+    <string name="account_destination_label">para:</string>
+    <string name="plus1_label">+ R$ 1</string>
+    <string name="plus5_label">+ R$ 5</string>
+    <string name="plus10_label">+ R$ 10</string>
+    <string name="confirm_label">confirmar</string>
+    <string name="circle_icon_acc">envolucro círcular para um ícone</string>
+    <string name="person_icon_acc">ícone de uma pessoa</string>
+</resources>

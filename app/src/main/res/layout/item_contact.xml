@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".adapter.holder.BaseHolder">
+
+    <data>
+        <variable
+            name="name"
+            type="String" />
+    </data>
+
+    <TextView
+        android:text="@{name}"
+        android:orientation="vertical"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:padding="@dimen/default_margin"
+        style="@style/DefaulAppearance"
+        tools:text="teste"
+        />
+
+</layout>

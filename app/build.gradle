@@ -1,0 +1,61 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "corp.bcapc.testitau"
+        minSdkVersion 22
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+            buildConfigField "String", "SERVER_URL", SERVER_URL_PROPERTY
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+    kapt {
+        useBuildCache = true
+        correctErrorTypes = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+
+    implementation libs.BaseDeps
+    implementation libs.AndroidXDeps
+    implementation libs.LifecicleDeps
+    implementation libs.LegacyDep
+    implementation libs.NavigationDeps
+    implementation libs.TimberDep
+    implementation libs.KoinDeps
+
+    testImplementation libs.UnitTestDeps
+
+    androidTestImplementation libs.AndroidTestDeps
+    implementation project(path: ':usecase')
+    implementation project(path: ':remote')
+
+}

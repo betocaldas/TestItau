@@ -1,0 +1,14 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation libs.BaseDeps
+    implementation libs.Retrofit
+    implementation libs.TimberDep
+    implementation libs.KoinDeps
+
+    implementation project(path: ':usecase')//Acho que não precisa. Remover depois para testar
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"

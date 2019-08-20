@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FB870F</color>
+    <color name="colorPrimaryDark">#CB600F</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="money_label">#888</color>
+    <color name="money_clear_bt">#008577</color>
+</resources>

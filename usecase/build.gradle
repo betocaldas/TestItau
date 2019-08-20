@@ -1,0 +1,12 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation libs.BaseDeps
+    implementation libs.KoinDeps
+
+    api project(path: ':data')
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"
