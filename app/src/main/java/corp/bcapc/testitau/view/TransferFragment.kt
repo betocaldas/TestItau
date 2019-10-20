@@ -14,13 +14,9 @@ class TransferFragment : Fragment() {
     private val data: TransferFragmentArgs by navArgs()
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         bind = FragmentTransferBinding.inflate(inflater, container, false)
-        bind.transferValue = "0"
+        bind.transferValue = 0.0
         return bind.root
     }
 

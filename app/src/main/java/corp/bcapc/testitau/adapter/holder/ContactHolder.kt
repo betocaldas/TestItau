@@ -10,7 +10,7 @@ class ContactHolder(private val bind: ItemContactBinding) : BaseHolder(bind) {
 
     override fun bind(name: String, listener: (String) -> Unit) {
         bind.name = name
-        itemView.setOnClickListener {
+        bind.root.setOnClickListener {
             listener(name)
         }
     }

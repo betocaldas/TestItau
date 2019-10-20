@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import corp.bcapc.testitau.R
 import corp.bcapc.testitau.adapter.ContactsAdapter
 import corp.bcapc.testitau.databinding.FragmentContactBinding
@@ -43,6 +45,14 @@ class ContactFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         bind.vm = userinfoVM
+        bind.contactsRv.layoutManager = object : LinearLayoutManager(this@ContactFragment.context) {
+            override fun generateDefaultLayoutParams(): RecyclerView.LayoutParams {
+                return RecyclerView.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                )
+            }
+        }
         bind.contactsRv.adapter = adapter
     }
 

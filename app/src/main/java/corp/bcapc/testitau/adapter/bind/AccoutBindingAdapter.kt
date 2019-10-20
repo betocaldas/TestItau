@@ -2,7 +2,6 @@ package corp.bcapc.testitau.adapter.bind
 
 import android.text.Editable
 import android.text.TextWatcher
-import android.widget.Button
 import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
@@ -14,6 +13,18 @@ import java.util.*
 /**
  *   Created by Carlos Alberto(Beto) Pereira Caldas on 19/08/2019 - 14:27
  */
+
+val locale = Locale("pt", "BR")
+val numberFormatter = NumberFormat.getInstance().apply {
+    currency = Currency.getInstance(locale)
+    isGroupingUsed = true
+    maximumFractionDigits = 2
+    minimumFractionDigits = 2
+}
+
+fun NumberFormat.unFormat(money: String, money_unit: String): Number =
+    numberFormatter.parse(money.replace("$money_unit ", ""))
+
 
 @BindingAdapter("account_group", "userinfo", requireAll = true)
 fun getAccountSelected(textView: TextView, accountGroup: RadioGroup, userInfo: UserInfo?) {
@@ -28,12 +39,7 @@ fun getAccountSelected(textView: TextView, accountGroup: RadioGroup, userInfo: U
 
 @BindingAdapter("money_unit")
 fun getMoneyFormatter(textView: TextView, unit: String) {
-    val formatter = NumberFormat.getInstance()
-    val locale = Locale("pt", "BR")
-    formatter.currency = Currency.getInstance(locale)
-    formatter.isGroupingUsed = true
-    formatter.maximumFractionDigits = 2
-    formatter.minimumFractionDigits = 2
+
     textView.addTextChangedListener(object : TextWatcher {
         var shouldChange = true
         override fun afterTextChanged(et: Editable?) {
@@ -41,7 +47,7 @@ fun getMoneyFormatter(textView: TextView, unit: String) {
                 shouldChange = false
                 et?.let {
                     val text = it.toString()
-                    it.replace(0, text.length, "$unit ${formatter.format(text.toDouble())}")
+                    it.replace(0, text.length, "$unit ${numberFormatter.format(text.toDouble())}")
                 }
             } else {
                 shouldChange = true
@@ -56,8 +62,13 @@ fun getMoneyFormatter(textView: TextView, unit: String) {
     })
 }
 
-@BindingAdapter("plus1Bt", "plus5Bt", "plus10Bt", "clearBt", "transferValue", requireAll = true)
-fun addMoney(textView: TextView, plus1Bt: Button, plus5Bt: Button, plus10Bt: Button,
-             clearBt: Button, transferValue: String) {
-
-}
+//@BindingAdapter("plus1Bt", "plus5Bt", "plus10Bt", "clearBt", "transferValue", requireAll = false)
+//fun addMoney(textView: TextView, plus1Bt: Button, plus5Bt: Button, plus10Bt: Button,
+//             clearBt: Button) {
+//    clearBt.setOnClickListener {
+//        textView.text = "0"
+//    }
+//    plus1Bt.setOnClickListener {
+//
+//    }
+//}

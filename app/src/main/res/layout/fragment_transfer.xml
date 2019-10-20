@@ -11,7 +11,7 @@
         
         <variable
             name="transferValue"
-            type="String" />
+            type="Double" />
         
     </data>
 
@@ -141,7 +141,7 @@
                 <TextView
                     money_unit="@{`R$`}"
                     android:id="@+id/moneyTv"
-                    android:text="@{transferValue, default=`R$ 0,00`}"
+                    android:text="@{transferValue.toString(), default=`R$ 0,00`}"
                     style="@style/MoneyAppearance"
                     android:layout_marginTop="@dimen/default_margin"
                     android:paddingTop="@dimen/default_margin"
